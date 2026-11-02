@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/nicholasbergesen/vivere-cli/cli"
+	"github.com/bergesenlabs/vivere-cli/cli"
 )
 
 // version is set at build time with -ldflags "-X main.version=...".

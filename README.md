@@ -35,7 +35,7 @@ The other builds are `vivere-linux-arm64`, `vivere-darwin-arm64`, `vivere-darwin
 With a Go toolchain:
 
 ```sh
-go install github.com/nicholasbergesen/vivere-cli/cmd/vivere@latest
+go install github.com/bergesenlabs/vivere-cli/cmd/vivere@latest
 ```
 
 ## Use
@@ -112,7 +112,7 @@ The full reference for `vivere run` (flags, exit codes, what it sends) is
 ## Why this repository exists
 
 The Vivere server binary has a `vivere run` subcommand that does the same job, and it
-imports `github.com/nicholasbergesen/vivere-cli/cli` from here rather than keeping a copy.
+imports `github.com/bergesenlabs/vivere-cli/cli` from here rather than keeping a copy.
 This repository is the canonical source for both, so the downloadable binary and the
 server's subcommand cannot drift apart.
 
