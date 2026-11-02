@@ -1,7 +1,9 @@
 # Vet, test and cross-compile on every push and pull request.
 #
-# The tests run on all three platforms because the wrapper spawns and kills
-# processes, which is where Linux, macOS and Windows differ.
+# The tests run on Linux and Windows, on the bergesenlabs org runners linux-1
+# and windows-1, because the wrapper spawns and kills processes, which is where
+# platforms differ. There is no macOS runner: macOS is covered by the darwin
+# cross-compile in the build job only.
 name: CI
 
 on:
@@ -15,8 +17,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+        os: [Linux, Windows]
+    runs-on: [self-hosted, bergesen-big, "${{ matrix.os }}"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -27,7 +29,7 @@ jobs:
 
   build:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, bergesen-big, Linux]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
